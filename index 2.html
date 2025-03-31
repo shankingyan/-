@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>密码验证</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f7f9fb;
+    }
+    h2 {
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #f43f5e;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 请输入访问密码</h2>
+  <input type="password" id="passwordInput" placeholder="输入密码">
+  <br>
+  <button onclick="verifyPassword()">提交</button>
+  <p id="result"></p>
+
+  <script>
+    const correctPassword = "120410";
+    const notionPageURL = "https://www.notion.so/11-1c73c684459c80faaa78dc437c46269c?pvs=4";
+
+    function verifyPassword() {
+      const input = document.getElementById("passwordInput").value;
+      const result = document.getElementById("result");
+
+      if (input === correctPassword) {
+        result.style.color = 'green';
+        result.innerHTML = "✅ 验证成功，正在跳转...";
+        setTimeout(() => {
+          window.location.href = notionPageURL;
+        }, 1000);
+      } else {
+        result.style.color = '#f43f5e';
+        result.innerHTML = "❌ 密码错误，请重试。";
+      }
+    }
+  </script>
+</body>
+</html>
